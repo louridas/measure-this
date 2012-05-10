@@ -1,0 +1,26 @@
+*** Java.g	2011-01-27 11:20:21.000000000 +0200
+--- JavaMine.g	2011-01-27 11:20:13.000000000 +0200
+***************
+*** 1388,1396 ****
+--- 1388,1408 ----
+                   ('0'..'7') ('0'..'7') 
+               |       
+                   ('0'..'7')
++              |   UnicodeEscapeSequence
+               )          
+  ;     
+  
++ fragment
++ UnicodeEscapeSequence
++     : UnicodeMarker HexDigit HexDigit HexDigit HexDigit 
++ ;
++ 
++ fragment
++ UnicodeMarker
++     : 'u'
++     | 'u' UnicodeMarker
++ ;
++         
+  WS  
+      :   (
+               ' '
